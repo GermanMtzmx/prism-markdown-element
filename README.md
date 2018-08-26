@@ -7,13 +7,13 @@ It allows render markdown to html with the help of `prismjs` and `commonmark` li
 **Install**
 
  ```shell
-npm i @germanmtzmx/prism-markdown-element
+npm i prism-markdown-element
  ```
 
  **import it**
 
  ```js
-import '@germanmtzmx/prism-markdown-element';
+import 'prism-markdown-element';
  ```
 
 ## Features
