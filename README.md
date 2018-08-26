@@ -1,6 +1,6 @@
 # \<prism-markdown-element\>
 
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/prism-markdown-element)
 
 **prism-markdown-element** is `LitElement` component inspired from [markdown-element](https://github.com/intcreator/markdown-element) but with extra sugar properties
 

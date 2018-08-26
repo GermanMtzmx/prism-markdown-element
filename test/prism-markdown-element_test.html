@@ -44,10 +44,14 @@
             expect(prismMarkdownElement.mdsrc).to.be.a('String');
           });
 
-          test('element should have styles property', () => {
-            expect(prismMarkdownElement).to.have.property('styles');
-            expect(prismMarkdownElement.styles).to.be.a('String');
+          test('element should have __styles property', () => {
+            expect(prismMarkdownElement).to.have.property('__styles');
+            expect(prismMarkdownElement.__styles).to.be.a('String');
+          });
 
+          test('element should have __markdownRendered property', () => {
+            expect(prismMarkdownElement).to.have.property('__markdownRendered');
+            expect(prismMarkdownElement.__markdownRendered).to.be.a('String');
           });
 
           test('element should have safe property', () => {
