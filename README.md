@@ -4,6 +4,18 @@
 
 It allows render markdown to html with the help of `prismjs` and `commonmark` libraries
 
+**Install**
+
+ ```shell
+npm i @germanmtzmx/prism-markdown-element
+ ```
+
+ **import it**
+
+ ```js
+import '@germanmtzmx/prism-markdown-element';
+ ```
+
 ## Features
 * Support highlight code syntax
 * Support the default themes from `prismjs`
