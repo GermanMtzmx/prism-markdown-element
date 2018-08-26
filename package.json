@@ -1,6 +1,12 @@
 {
-  "name": "colored-markdown-element",
-  "main": "colored-markdown-element.js",
+  "name": "prism-markdown-element",
+  "version": "1.0.0",
+  "description": "A LitElement that renders colored markdown",
+  "main": "prism-markdown-element.js",
+  "repository": "git@github.com:GermanMtzmx/prism-markdown-element.git",
+  "author": "German Martinez Solis <german.mtz.solis@gmail.com>",
+  "license": "MIT",
+  "private": false,
   "dependencies": {
     "@polymer/lit-element": "^0.5.2",
     "commonmark": "^0.28.1",
