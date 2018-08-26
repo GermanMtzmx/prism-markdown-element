@@ -1,5 +1,7 @@
 # \<prism-markdown-element\>
 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
+
 **prism-markdown-element** is `LitElement` component inspired from [markdown-element](https://github.com/intcreator/markdown-element) but with extra sugar properties
 
 It allows render markdown to html with the help of `prismjs` and `commonmark` libraries
