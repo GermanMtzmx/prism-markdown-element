@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>prism-markdown-element test</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+
+    <script type="module" src="../prism-markdown-element.js"></script>
+  </head>
+  <body>
+
+    <test-fixture id="PrismMarkdownTests">
+      <template>
+        <prism-markdown-element></prism-markdown-element>
+      </template>
+    </test-fixture>
+
+
+    <script type="module">
+
+      suite('prism-markdown-element', () => {
+
+        var prismMarkdownElement;
+
+        setup(function setupSuite(){
+          prismMarkdownElement = fixture('PrismMarkdownTests');
+        });
+
+        teardown(function suiteTeardown(){
+          prismMarkdownElement.remove();
+        });
+        test('element should be in the dom', () => {
+          expect(prismMarkdownElement).not.to.be.undefined;
+        });
+
+        suite('Property suite', function PropertiesSuite(){
+
+          test('element should have mdsrc property', () => {
+            expect(prismMarkdownElement).to.have.property('mdsrc');
+            expect(prismMarkdownElement.mdsrc).to.be.a('String');
+          });
+
+          test('element should have styles property', () => {
+            expect(prismMarkdownElement).to.have.property('styles');
+            expect(prismMarkdownElement.styles).to.be.a('String');
+
+          });
+
+          test('element should have safe property', () => {
+            expect(prismMarkdownElement).to.have.property('safe');
+            expect(prismMarkdownElement.safe).to.be.a('Boolean');
+
+          });
+
+          test('element should have theme property', () => {
+            expect(prismMarkdownElement).to.have.property('theme');
+            expect(prismMarkdownElement.theme).to.be.a('String');
+
+          });
+
+          test('element should have markdown property', () => {
+            expect(prismMarkdownElement).to.have.property('markdown');
+            expect(prismMarkdownElement.markdown).to.be.a('String');
+
+          });
+
+          test('element should have customtheme property', () => {
+            expect(prismMarkdownElement).to.have.property('customtheme');
+            expect(prismMarkdownElement.customtheme).to.be.a('String');
+
+          });
+        });
+
+
+        suite('Methods suite', function MethodsSuite() {
+
+          test('fetchStyles method should retrieve styles from any url', done => {
+            const url = 'https://raw.githubusercontent.com/PrismJS/prism-themes/master/themes/prism-duotone-sea.css';
+            prismMarkdownElement.fetchStyles({url}).then(styles => {
+              expect(styles).to.be.a('String');
+              done();
+            });
+          });
+
+          test('fetchMd method should return a promise with markdown', done => {
+            const mdurl = './../README.md';
+            prismMarkdownElement.fetchMd(mdurl).then(markdown => {
+              expect(markdown).to.be.a('String');
+              done();
+            });
+          });
+
+          test('parseMarkdown method should return an html element', done => {
+            const mdurl = './../README.md';
+            prismMarkdownElement.fetchMd(mdurl).then(markdown => {
+              const mdRendered = prismMarkdownElement.parseMarkdown(markdown);
+              expect(mdRendered).to.be.a('Object');
+              done();
+            });
+          })
+        });
+
+
+      });
+    </script>
+
+  </body>
+</html>

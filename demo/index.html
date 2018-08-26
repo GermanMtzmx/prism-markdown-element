@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>prism-markdown-element demo</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+      import '@polymer/iron-demo-helpers/demo-snippet';
+    </script>
+
+    <script type="module" src="../prism-markdown-element.js"></script>
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic colored-markdown demo</h3>
+      <demo-snippet>
+        <template>
+          <prism-markdown-element
+            theme="dark"
+            mdsrc="./../README.md">
+          </prism-markdown-element>
+        </template>
+      </demo-snippet>
+
+      <h3>With remote theme and markdown</h3>
+      <demo-snippet>
+        <template>
+          <prism-markdown-element
+            customtheme="https://raw.githubusercontent.com/PrismJS/prism-themes/master/themes/prism-ghcolors.css"
+            mdsrc="https://gist.githubusercontent.com/GermanMtzmx/3855ed67c331bad39d2a625a597a83d5/raw/92399a9fd8b29ec7b750c111a45f0cf6eb532e86/testingMethodsInsideNestedDomIf.md">
+          </prism-markdown-element>
+        </template>
+      </demo-snippet>
+
+      <h3>Markdown string and prismjs theme</h3>
+      <demo-snippet>
+        <template>
+          <prism-markdown-element
+            theme="coy"
+            markdown=" # Hello prism markdown element"
+            >
+          </prism-markdown-element>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
