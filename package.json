@@ -1,12 +1,11 @@
 {
   "name": "prism-markdown-element",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A LitElement that renders colored markdown",
   "main": "prism-markdown-element.js",
-  "repository": "git@github.com:GermanMtzmx/prism-markdown-element.git",
-  "author": "German Martinez Solis <german.mtz.solis@gmail.com>",
-  "license": "MIT",
-  "private": false,
+  "directories": {
+    "test": "test"
+  },
   "dependencies": {
     "@polymer/lit-element": "^0.5.2",
     "commonmark": "^0.28.1",
@@ -16,5 +15,26 @@
     "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "wct-browser-legacy": "^1.0.0"
-  }
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GermanMtzmx/prism-markdown-element.git"
+  },
+  "keywords": [
+    "Markdown",
+    "webcomponents",
+    "LitElement",
+    "commonmark",
+    "prismjs",
+    "prism-markdown-element"
+  ],
+  "author": "German Martinez Solis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GermanMtzmx/prism-markdown-element/issues"
+  },
+  "homepage": "https://github.com/GermanMtzmx/prism-markdown-element#readme"
 }
