@@ -35,7 +35,7 @@ mdsrc="https://gist.githubusercontent.com/GermanMtzmx/3855ed67c331bad39d2a625a59
 </prism-markdown-element>
 ```
 
-** markdown string and prismtheme**
+**markdown string and prismtheme**
 
 ```html
 <prism-markdown-element
