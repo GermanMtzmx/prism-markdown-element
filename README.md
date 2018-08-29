@@ -15,7 +15,7 @@ npm i prism-markdown-element
  **import it**
 
  ```js
-import 'prism-markdown-element';
+import 'prism-markdown-element/prism-markdown-element.js';
  ```
 
 ## Features
@@ -44,7 +44,7 @@ mdsrc="https://gist.githubusercontent.com/GermanMtzmx/3855ed67c331bad39d2a625a59
 
 ``` html
 <prism-markdown-element
-  theme="https://raw.githubusercontent.com/PrismJS/prism-themes/master/themes/prism-ghcolors.css"
+  customtheme="https://raw.githubusercontent.com/PrismJS/prism-themes/master/themes/prism-ghcolors.css"
   mdsrc="https://gist.githubusercontent.com/GermanMtzmx/3855ed67c331bad39d2a625a597a83d5/raw/92399a9fd8b29ec7b750c111a45f0cf6eb532e86/testingMethodsInsideNestedDomIf.md">
 </prism-markdown-element>
 ```

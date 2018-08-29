@@ -3,14 +3,6 @@ import 'commonmark/dist/commonmark.min.js';
 import { LitElement, html } from '@polymer/lit-element';
 import { unsafeHTML } from 'lit-html/lib/unsafe-html.js';
 
-
-/**
-*
-*
-*
-*
-*/
-
 class PrismMarkdownElement extends LitElement {
   static get properties() {
      return {
@@ -53,7 +45,7 @@ class PrismMarkdownElement extends LitElement {
     const customtheme = this.getAttribute('customtheme');
     const theme = this.getAttribute('theme');
     if (theme === null && customtheme === null) {
-      this.fetchStyles({ theme: 'prism' });
+      this.setAttribute('theme','default');
     }
   }
 
