@@ -1,7 +1,7 @@
 import 'prismjs/prism.js';
 import 'commonmark/dist/commonmark.min.js';
 import { LitElement, html } from '@polymer/lit-element';
-import { unsafeHTML } from 'lit-html/lib/unsafe-html.js';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 
 class PrismMarkdownElement extends LitElement {
   static get properties() {
@@ -122,14 +122,14 @@ class PrismMarkdownElement extends LitElement {
    return html`${unsafeHTML(this.__writer.render(this.__reader.parse(markdown)))}`;
   }
 
-  _didRender() {
+  updated() {
      Prism.highlightAllUnder(this.shadowRoot);
   }
 
-  _render({ __markdownRendered, __styles }) {
+  render() {
     return html`
-      ${__styles}
-      ${__markdownRendered}`
+      ${this.__styles}
+      ${this.__markdownRendered}`
   }
 
 }
