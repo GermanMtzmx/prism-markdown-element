@@ -1,6 +1,6 @@
 {
   "name": "prism-markdown-element",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A LitElement that renders colored markdown",
   "main": "prism-markdown-element.js",
   "directories": {
