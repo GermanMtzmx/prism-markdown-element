@@ -1,7 +1,7 @@
 import 'prismjs/prism.js';
 import 'commonmark/dist/commonmark.min.js';
-import { LitElement, html } from '@polymer/lit-element';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
+import { LitElement, html } from 'lit-element/lit-element.js';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 
 class PrismMarkdownElement extends LitElement {
   static get properties() {
