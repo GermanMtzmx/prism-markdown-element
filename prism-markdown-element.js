@@ -3,6 +3,8 @@ import 'commonmark/dist/commonmark.min.js';
 import { LitElement, html } from 'lit-element/lit-element.js';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 
+const ALLOWED_THEMES = ['coy', 'dark', 'funky', 'okaidia','solarizedlight', 'tomorrow', 'twilight'];
+
 class PrismMarkdownElement extends LitElement {
   static get properties() {
      return {
@@ -13,20 +15,19 @@ class PrismMarkdownElement extends LitElement {
        customtheme: String,
        __markdownRendered: String,
        __styles: String,
-
-     }
-   }
-   /**
-    * Set default values for component attributes
-    * @property {Boolean} safe enable safe render for commonmark
-    * @property {String} mdsrc markdown resource
-    * @property {String} theme prismjs theme name
-    * @property {String} customtheme prismjs theme url
-    * @property {String} __styles template object that contain styles
-    * @property {Strin} __markdownRendered property used to render markdown
-    * @property {Object} __reader Instance of commonmark parser
-    * @property {Object} __writer Instance of commonmark writer
-    */
+    }
+  }
+  /**
+  * Set default values for component attributes
+  * @property {Boolean} safe enable safe render for commonmark
+  * @property {String} mdsrc markdown resource
+  * @property {String} theme prismjs theme name
+  * @property {String} customtheme prismjs theme url
+  * @property {String} __styles template object that contain styles
+  * @property {Strin} __markdownRendered property used to render markdown
+  * @property {Object} __reader Instance of commonmark parser
+  * @property {Object} __writer Instance of commonmark writer
+  */
   constructor() {
    super();
    this.safe = true;
@@ -50,7 +51,6 @@ class PrismMarkdownElement extends LitElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-     this[name] = newValue;
      switch(name) {
         case 'mdsrc':
           this.fetchMd(newValue).then(markdown => {
@@ -61,18 +61,12 @@ class PrismMarkdownElement extends LitElement {
           this.__markdownRendered = this.parseMarkdown(newValue);
           return;
         case 'theme':
-          this.fetchStyles({ theme: newValue }).then(newStyles => {
-            this.__styles = html`${unsafeHTML(newStyles)}`;
-          }).catch(error => {
-            this.__styles = "";
-          });
-          return;
         case 'customtheme':
-          this.fetchStyles({ url: newValue }).then(newStyles => {
-            this.__styles = html`${unsafeHTML(newStyles)}`;
-          }).catch(error => {
-            this.__styles = "";
-          })
+          let body = {};
+          body[name] = newValue;
+          this.fetchStyles(body).then(styles => {
+            this.__styles = html`${unsafeHTML(styles)}`;
+          });
           return;
         default:
           break;
@@ -96,22 +90,17 @@ class PrismMarkdownElement extends LitElement {
   * @param {String} config.theme name of the prismjs theme
   * @return {Promise}
   */
-  fetchStyles({url, theme}) {
-   const allowedThemes = ['coy', 'dark', 'funky', 'okaidia','solarizedlight', 'tomorrow', 'twilight'];
-   const theme_file = (!allowedThemes.includes(theme)) ? 'prism.css' : `prism-${theme}.css`;
+  async fetchStyles({ url, theme }) {
+   const theme_file = (ALLOWED_THEMES.includes(theme)) ? `prism-${theme}.css` : 'prism.css';
    const resource = url !== undefined ? url : `../node_modules/prismjs/themes/${theme_file}`;
-   return fetch(resource).then(res => res.text()).then(styles => {
-     const styleTag = `
-      <style>
-        :host {
-          display: block;
-        }
-        ${styles}
-      </style>`;
-      return styleTag;
-   });
+   const fetchedStyles = await fetch(resource).then(async response => await response.text()).catch(e => '');
+   return `<style>
+    :host {
+      display: block;
+    }
+    ${fetchedStyles}
+    </style>`;
   }
-
   /**
   * @method parseMarkdown
   * @description parse markdown string to html content
@@ -131,7 +120,5 @@ class PrismMarkdownElement extends LitElement {
       ${this.__styles}
       ${this.__markdownRendered}`
   }
-
 }
-
 customElements.define('prism-markdown-element', PrismMarkdownElement);
