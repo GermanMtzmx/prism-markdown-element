@@ -90,9 +90,9 @@ class PrismMarkdownElement extends LitElement {
   * @param {String} config.theme name of the prismjs theme
   * @return {Promise}
   */
-  async fetchStyles({ url, theme }) {
+  async fetchStyles({ customtheme, theme }) {
    const theme_file = (ALLOWED_THEMES.includes(theme)) ? `prism-${theme}.css` : 'prism.css';
-   const resource = url !== undefined ? url : `../node_modules/prismjs/themes/${theme_file}`;
+   const resource = customtheme !== undefined ? customtheme : `../node_modules/prismjs/themes/${theme_file}`;
    const fetchedStyles = await fetch(resource).then(async response => await response.text()).catch(e => '');
    return `<style>
     :host {
